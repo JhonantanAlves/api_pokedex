@@ -21,11 +21,6 @@ function convertToPokemon(pokemon) {
 
 const pokemonListHtml = document.getElementById("pokemonList")
 
-    .then((pokemonList) => {
-        for (let i = 0; i < pokemonList.length; i++) {
-            const pokemon = pokemonList[i];
-            pokemonListHtml.innerHTML += convertToPokemon(pokemon);
-
-        }
-    })
-
+pokeApi.getPokemons().then((pokemons = []) => {
+    pokemonListHtml.innerHTML = pokemons.map(convertToPokemon).join('');
+})
